@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = ""
+    registry = "jbaltar/simplilearn-devops-certification-training-project"
     registryCredential = ''
   }
   agent any
