@@ -38,6 +38,32 @@ pipeline {
             sh "docker rmi $registry:$BUILD_NUMBER"
         }
         }
+    
+        stage('Pull Image') {
+        steps{
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            echo "Starting Pulling Image"
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            script {
+            docker.withRegistry( '', 'jbaltar-dockerhub' ) {
+                dockerImage.pull()
+            }
+            }
+        }
+        }
+    
+        stage('My RUN') {
+        steps{
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            echo "Starting Removing Image"
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            script {
+            docker.withRegistry( '', 'jbaltar-dockerhub' ) {
+                dockerImage.run()
+            }
+            }
+        }
+        }
    }   
 }
 
