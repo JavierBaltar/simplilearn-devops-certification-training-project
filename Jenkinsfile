@@ -44,7 +44,7 @@ pipeline {
 node {
     stage('Execute Image'){
         echo "-----------------------------------------------------------------------------------------------------------------"
-        echo "Starting Deploying Image"
+        echo "Starting Running Application"
         echo "-----------------------------------------------------------------------------------------------------------------"
         def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
         customImage.inside {
