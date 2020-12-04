@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "jbaltar/simplilearn-devops-certification-training-project"
-    registryCredential = 'dockerhub'
+    registryCredential = 'jbaltar-dockerhub'
   }
   agent any
   stages {
