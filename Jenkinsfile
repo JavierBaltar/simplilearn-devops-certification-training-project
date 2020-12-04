@@ -5,7 +5,7 @@ pipeline {
   }
   agent any
   stages {
-        stage('Building image') {
+        stage('Building image ') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
             echo "Starting Building Image"
