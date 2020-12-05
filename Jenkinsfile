@@ -16,7 +16,7 @@ pipeline {
         }
         }
 
-        stage('Deploy Image') {
+        stage('Deploy Image to Docker Hub  Repository') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
             echo "Starting Deploying Image"
