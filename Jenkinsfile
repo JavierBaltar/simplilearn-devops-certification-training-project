@@ -16,7 +16,7 @@ pipeline {
         }
         }
 
-        stage('Deploy Image to Docker Hub  Repository') {
+        stage('Deploy Image to Docker Hub Repository') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
             echo "Starting Deploying Image"
@@ -52,7 +52,7 @@ pipeline {
         }
         }
     
-        stage('My RUN') {
+        stage('My RUN 2') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
             echo "Starting Removing Image"
