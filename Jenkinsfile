@@ -5,6 +5,13 @@ pipeline {
   }
   agent any
   stages {
+
+        stage('Checkout') { // Checkout the repository containing your deploy automation
+        steps {
+            checkout scm
+        }
+        }
+   
         stage('Building image ') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
