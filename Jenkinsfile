@@ -8,7 +8,7 @@ pipeline {
         stage('Building image ') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
-            echo "Starting Building Image"
+            echo "Starting Building Image "
             echo "-----------------------------------------------------------------------------------------------------------------"
             script {
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
