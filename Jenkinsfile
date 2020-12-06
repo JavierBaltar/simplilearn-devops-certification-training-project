@@ -54,12 +54,12 @@ pipeline {
         }
         stage('Execute Docker Container'){
         steps{
-        echo "-----------------------------------------------------------------------------------------------------------------"
-        echo "Starting Running Dockerized Application"
-        echo "-----------------------------------------------------------------------------------------------------------------"
-        def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
-        customImage.inside {
-            sh 'python /tmp/script.py'
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            echo "Starting Running Dockerized Application"
+            echo "-----------------------------------------------------------------------------------------------------------------"
+            def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
+            customImage.inside {
+                sh 'python /tmp/script.py'
         }
         }
     }
