@@ -5,12 +5,6 @@ pipeline {
   }
   agent any
   stages {
-
-        stage('Checkout') { // Checkout the repository containing your deploy automation
-        steps {
-            checkout scm
-        }
-        }
    
         stage('Building image ') {
         steps{
@@ -59,18 +53,6 @@ pipeline {
         }
         }
     
-        stage('My RUN 2') {
-        steps{
-            echo "-----------------------------------------------------------------------------------------------------------------"
-            echo "Starting Removing Image"
-            echo "-----------------------------------------------------------------------------------------------------------------"
-            script {
-            docker.withRegistry( '', 'jbaltar-dockerhub' ) {
-                dockerImage.run()
-            }
-            }
-        }
-        }
    }   
 }
 
@@ -81,7 +63,6 @@ node {
         echo "-----------------------------------------------------------------------------------------------------------------"
         def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
         customImage.inside {
-            sh 'echo This is the code executing inside the container.'
             sh 'python /tmp/script.py'
         }
     }
