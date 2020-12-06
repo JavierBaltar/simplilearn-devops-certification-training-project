@@ -1,4 +1,3 @@
-
-# Dockerfile
-FROM busybox
-CMD echo "Hello world! This is my first Docker image."
+FROM python:3.8
+COPY hello.py /tmp/
+CMD ["python", "/tmp/script.py"]
