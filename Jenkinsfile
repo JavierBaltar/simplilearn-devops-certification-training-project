@@ -6,10 +6,10 @@ pipeline {
   agent any
   stages {
    
-        stage('Building image ') {
+        stage('Building image') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
-            echo "Starting Building Image "
+            echo "Starting Building Docker Image "
             echo "-----------------------------------------------------------------------------------------------------------------"
             script {
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy Image to Docker Hub Repository') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
-            echo "Starting Deploying Image"
+            echo "Starting Deploying Docker Image"
             echo "-----------------------------------------------------------------------------------------------------------------"
             script {
             docker.withRegistry( '', 'jbaltar-dockerhub' ) {
@@ -30,17 +30,17 @@ pipeline {
         }
         }
 
-        stage('Remove Image') {
+        stage('Remove Docker Image') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
-            echo "Starting Removing Image"
+            echo "Starting Removing Docker Image"
             echo "-----------------------------------------------------------------------------------------------------------------"
             
             sh "docker rmi $registry:$BUILD_NUMBER"
         }
         }
     
-        stage('Pull Image') {
+        stage('Pull Docker Image from Docker Hub Repository') {
         steps{
             echo "-----------------------------------------------------------------------------------------------------------------"
             echo "Starting Pulling Image"
@@ -52,18 +52,15 @@ pipeline {
             }
         }
         }
-    
-   }   
-}
-
-node {
-    stage('Execute Image'){
+        stage('Execute Docker Container'){
         echo "-----------------------------------------------------------------------------------------------------------------"
-        echo "Starting Running Application"
+        echo "Starting Running Dockerized Application"
         echo "-----------------------------------------------------------------------------------------------------------------"
         def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
         customImage.inside {
             sh 'python /tmp/script.py'
         }
     }
+    
+   }   
 }
