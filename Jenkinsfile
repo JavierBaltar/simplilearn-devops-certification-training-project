@@ -82,6 +82,7 @@ node {
         def customImage = docker.build("jbaltar/simplilearn-devops-certification:${env.BUILD_NUMBER}")
         customImage.inside {
             sh 'echo This is the code executing inside the container.'
+            sh 'python /tmp/script.py'
         }
     }
 }
