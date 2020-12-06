@@ -2,5 +2,5 @@
 
 import sys
 
-print("hello there! This is a code change 2!")
+print("hello, this is a script running in a Docker container!")
 print(sys.version)
